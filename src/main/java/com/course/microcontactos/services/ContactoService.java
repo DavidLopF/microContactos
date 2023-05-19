@@ -11,12 +11,10 @@ public interface ContactoService {
 
     Contacto recuperarContacto(String email);
 
-    void eliminarContacto(String email);
+    boolean eliminarContacto(String email);
 
     List<Contacto> devolverContactos();
 
-    Contacto devolverContacto(int idContacto);
 
-    void actualizarContacto(Contacto contactoDTO);
 
 }

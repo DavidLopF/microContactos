@@ -68,5 +68,21 @@ public class ContactoController {
         return ResponseEntity.ok(response);
     }
 
+    @DeleteMapping(value = "/deleteContacto", produces = "application/json")
+    public ResponseEntity<GeneralResponseDTO> deleteContacto(@RequestParam String email){
+        log.info("Lanzando servicio Delete - Eliminar contacto el email es : " + email );
+        GeneralResponseDTO response = new GeneralResponseDTO();
+        boolean flag = contactoService.eliminarContacto(email);
+        if(flag) {
+            response.setMensaje("Contacto eliminado correctamente");
+            response.setObject(null);
+            return ResponseEntity.ok(response);
+        } else {
+            response.setMensaje("Error al eliminar el contacto");
+            response.setObject(null);
+            return ResponseEntity.badRequest().body(response);
+        }
+    }
+
 
 }

@@ -38,8 +38,14 @@ public class ContactoServiceImp implements ContactoService {
     }
 
     @Override
-    public void eliminarContacto(String email) {
+    public boolean eliminarContacto(String email) {
+        try{
         contactoRepository.deleteByEmail(email);
+        return true;
+        }catch (Exception e){
+            log.error("Error in eliminarContacto", e);
+            return false;
+        }
     }
 
     @Override
@@ -48,15 +54,4 @@ public class ContactoServiceImp implements ContactoService {
         return list;
     }
 
-
-    @Override
-    public Contacto devolverContacto(int idContacto) {
-        contactoRepository.findContactoByIdContacto(idContacto);
-        return null;
-    }
-
-    @Override
-    public void actualizarContacto(Contacto contacto) {
-        contactoRepository.save(contacto);
-    }
 }

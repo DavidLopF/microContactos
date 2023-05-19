@@ -26,4 +26,5 @@ public interface ContactoRepository extends JpaRepository<Contacto, Integer> {
     Contacto findContactoByIdContacto(int idContacto);
 
 
+
 }
