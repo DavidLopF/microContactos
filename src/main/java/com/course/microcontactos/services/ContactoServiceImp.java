@@ -11,30 +11,30 @@ import java.util.List;
 
 @Service
 @Log4j2
-public class ContactoServiceImp implements ContactoService{
+public class ContactoServiceImp implements ContactoService {
 
     @Autowired
     private ContactoRepository contactoRepository;
 
     @Override
-    public  boolean agregarContacto(ContactoRequestDTO contactoDTO) {
+    public Contacto agregarContacto(ContactoRequestDTO contactoDTO) {
         try {
-        Contacto contacto = new Contacto();
-        contacto.setNombre(contactoDTO.getName());
-        contacto.setEdad(contactoDTO.getEdad());
-        contacto.setEmail(contactoDTO.getEmail());
-        contactoRepository.save(contacto);
-        log.info("Contacto agregado correctamente");
-        return true;
-        }catch(Exception e){
+            Contacto contacto = new Contacto();
+            contacto.setNombre(contactoDTO.getName());
+            contacto.setEdad(contactoDTO.getEdad());
+            contacto.setEmail(contactoDTO.getEmail());
+            contacto = contactoRepository.save(contacto);
+            log.info("Contacto agregado correctamente");
+            return contacto;
+        } catch (Exception e) {
             log.error("Error in agregarContacto", e);
-            return false;
+            return null;
         }
     }
 
     @Override
-    public void recuperarContacto(String email) {
-        contactoRepository.findByEmail(email);
+    public Contacto recuperarContacto(String email) {
+       return contactoRepository.findByEmail(email);
     }
 
     @Override
@@ -43,16 +43,11 @@ public class ContactoServiceImp implements ContactoService{
     }
 
     @Override
-    public List<ContactoRequestDTO> devolverContactos() {
-        //List<ContactoDTO> list =  ContactoRepository.findAll();
-
-        return null;
+    public List<Contacto> devolverContactos() {
+        List<Contacto> list = contactoRepository.findALL();
+        return list;
     }
 
-    @Override
-    public void eliminarContacto(int idContacto) {
-        contactoRepository.deleteById(idContacto);
-    }
 
     @Override
     public Contacto devolverContacto(int idContacto) {

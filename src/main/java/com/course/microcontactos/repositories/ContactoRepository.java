@@ -7,6 +7,8 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 public interface ContactoRepository extends JpaRepository<Contacto, Integer> {
 
@@ -19,7 +21,7 @@ public interface ContactoRepository extends JpaRepository<Contacto, Integer> {
     @Query("delete from Contacto c where c.email = ?1")
     void deleteByEmail(String email);
 
-    void findALL();
+    List<Contacto> findALL();
 
     Contacto findContactoByIdContacto(int idContacto);
 

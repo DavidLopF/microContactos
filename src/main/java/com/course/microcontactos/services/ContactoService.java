@@ -7,15 +7,13 @@ import java.util.List;
 
 public interface ContactoService {
 
-    boolean agregarContacto(ContactoRequestDTO contacto);
+    Contacto agregarContacto(ContactoRequestDTO contacto);
 
-    void recuperarContacto(String email);
+    Contacto recuperarContacto(String email);
 
     void eliminarContacto(String email);
 
-    List<ContactoRequestDTO> devolverContactos();
-
-    void eliminarContacto(int idContacto);
+    List<Contacto> devolverContactos();
 
     Contacto devolverContacto(int idContacto);
 

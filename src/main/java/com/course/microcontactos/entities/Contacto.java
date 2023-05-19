@@ -14,6 +14,7 @@ public class Contacto implements Serializable {
 
     private int edad;
 
+    @Column(unique = true)
     private String email;
 
 
