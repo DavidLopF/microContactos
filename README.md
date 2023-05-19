@@ -1,5 +1,9 @@
 # microContactos
 
+## Desarrollador
+
+- Nombre: David Lopez
+
 ## Descripción
 
 Este proyecto es una aplicación web que permite a los usuarios registrados crear contactos y visualizarlos en una lista. Además, permite editar y eliminar los contactos creados.
